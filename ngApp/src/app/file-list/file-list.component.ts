@@ -12,4 +12,6 @@ export class FileListComponent implements OnInit {
   ngOnInit() {
   }
 
+  request = ['Queja', 'Sugerencia' ];
+
 }
