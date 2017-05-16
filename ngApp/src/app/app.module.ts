@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FileListComponent } from './file-list/file-list.component';
+import { FilesComponent } from './files/files.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FileListComponent
+    FileListComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,

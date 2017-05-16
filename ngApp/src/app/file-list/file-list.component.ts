@@ -13,5 +13,6 @@ export class FileListComponent implements OnInit {
   }
 
   request = ['Queja', 'Sugerencia' ];
+  request2 = ['.unileon.es', '.estudiantes.unileon.es' ];
 
 }

@@ -1,14 +1,21 @@
-<nav class="navbar navbar-inverse"> 
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Defensoría</a>
     </div>
     <ul class="nav navbar-nav">
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>  
-    <li><a routerLink="/files" routerLinkActive="active">FileList</a></li>  
+      <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/encuesta" routerLinkActive="active">Encuesta</a></li>
+      <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
     </ul>
   </div>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted">Made by: Javier Leza Andía</p>
+  </div>
+</footer>
