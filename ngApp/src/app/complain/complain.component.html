@@ -1,0 +1,34 @@
+
+<div class="container">
+    <h1>Queja</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="LastName">Apellidos</label>
+        <input type="text" class="form-control" id="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="request">Asunto</label>
+        <select class="form-control" id="request" required>
+          <option *ngFor="let req of request" [value]="req">{{req}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="request2">Correo Electronico</label>
+        <input type="text" class="form-control" id="email" required>
+        <select class="form-control" id="request2" required>
+          <option *ngFor="let req2 of request2" [value]="req2">{{req2}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Motivo</label>
+        <textarea class="form-control" rows="5" name="reas" required>
+        </textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

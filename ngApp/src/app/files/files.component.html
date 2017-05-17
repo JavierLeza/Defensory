@@ -1,8 +1,8 @@
-<div>
-  <div class="col-sm-9">
-    <app-file-list></app-file-list>
-  </div>
-  <div class="col-sm-3">
-    
-  </div>
+<div class="row">
+    <div class="col-sm-9">
+        <file-detail *ngIf="selectedFile" [file]="selectedFile"></file-detail>
+    </div>
+    <div class="col-sm-3">
+        <file-list (SelectFile)="onSelectFile($event)" [files]="files"></file-list>
+    </div>
 </div>

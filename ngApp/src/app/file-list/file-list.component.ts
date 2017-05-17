@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { File } from './../file';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-file-list',
+  selector: 'file-list',
   templateUrl: './file-list.component.html',
-  styleUrls: ['./file-list.component.css']
+  styleUrls: ['./file-list.component.css'],
+  inputs: ['files'],
+  outputs: ['SelectFile']
 })
 export class FileListComponent implements OnInit {
 
+  public SelectFile = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
-  request = ['Queja', 'Sugerencia' ];
-  request2 = ['.unileon.es', '.estudiantes.unileon.es' ];
+  onSelect(fil: File){
+    this.SelectFile.emit(fil);
+  }
 
 }
