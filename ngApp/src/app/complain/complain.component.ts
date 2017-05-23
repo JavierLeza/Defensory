@@ -1,16 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Answer } from "./../answer";
+import { AnswerService } from "./../answer.service";
 
 @Component({
   selector: 'app-complain',
   templateUrl: './complain.component.html',
-  styleUrls: ['./complain.component.css']
+  styleUrls: ['./complain.component.css'],
+  providers: [ AnswerService ]
 })
 export class ComplainComponent implements OnInit {
 
-  constructor() { }
+  selectedComplain: Answer;
+
+  complains: Array<Answer>;
+
+  constructor(private _complainService: AnswerService) { }
 
   ngOnInit() {
   }
-  request = ['Queja', 'Sugerencia' ];
-  request2 = ['.unileon.es', '.estudiantes.unileon.es' ];
+
+  onSubmitAddComplain(complain: Answer) {
+    this._complainService.addComplain(complain)
+      .subscribe(resNewComplain => {
+        this.complains.push(resNewComplain);
+        this.selectedComplain = resNewComplain;
+      });
+  }
+
+  req = ['Queja', 'Sugerencia'];
+  emreq = ['.unileon.es', '.estudiantes.unileon.es'];
 }
+

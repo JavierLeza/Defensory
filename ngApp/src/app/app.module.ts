@@ -10,6 +10,9 @@ import { FileListComponent } from './file-list/file-list.component';
 import { FilesComponent } from './files/files.component';
 import { ComplainComponent } from './complain/complain.component';
 import { FileDetailComponent } from './file-detail/file-detail.component';
+import { AnswerCenterComponent } from './answer-center/answer-center.component';
+import { AnswerListComponent } from './answer-list/answer-list.component';
+import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FileDetailComponent } from './file-detail/file-detail.component';
     FileListComponent,
     FilesComponent,
     ComplainComponent,
-    FileDetailComponent
+    FileDetailComponent,
+    AnswerCenterComponent,
+    AnswerListComponent,
+    AnswerDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,34 +1,36 @@
-
 <div class="container">
-    <h1>Queja</h1>
-    <form>
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name" required>
-      </div>
-      <div class="form-group">
-        <label for="LastName">Apellidos</label>
-        <input type="text" class="form-control" id="lastName" required>
-      </div>
-      <div class="form-group">
-        <label for="request">Asunto</label>
-        <select class="form-control" id="request" required>
-          <option *ngFor="let req of request" [value]="req">{{req}}</option>
+  <h1>Queja</h1>
+  <form #form="ngForm" (ngSubmit)="onSubmitAddComplain(form.value)" class="well">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" name="name" required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="LastName">Apellidos</label>
+      <input type="text" class="form-control" name="lastName" required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="req">Asunto</label>
+      <select class="form-control" name="request" required ngModel>
+          <option *ngFor="let request of req" [value]="request">{{request}}</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label for="request2">Correo Electronico</label>
-        <input type="text" class="form-control" id="email" required>
-        <select class="form-control" id="request2" required>
-          <option *ngFor="let req2 of request2" [value]="req2">{{req2}}</option>
+    </div>
+    <div class="form-group">
+      <label for="email">Correo Electronico</label>
+      <input type="text" class="form-control" name="email" required ngModel>
+      <select class="form-control" name="email" required ngModel>
+          <option *ngFor="let email of emreq" [value]="email">{{email}}</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label for="name">Motivo</label>
-        <textarea class="form-control" rows="5" name="reas" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Tema</label>
+      <input type="text" class="form-control" name="topic" required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="name">Motivo</label>
+      <textarea class="form-control" rows="4" name="reason" required ngModel>
         </textarea>
-      </div>
-
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+    </div>   
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 </div>

@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-9">
+    <answer-detail (updateAnswerEvent)="onUpdateAnswerEvent($event)" *ngIf="selectedAnswer" [answer]="selectedAnswer"></answer-detail>
+  </div>
+  <div class="col-md-3">
+    <answer-list (SelectAnswer)="onSelectAnswer($event)" [answers]="answers"></answer-list>
+  </div>
+</div>

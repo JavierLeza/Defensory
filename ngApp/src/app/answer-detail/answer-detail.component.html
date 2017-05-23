@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Respuesta</h1>
+  <form>
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="input" class="form-control" name="name" required placeholder="name" readonly="readonly" [(ngModel)]="answer.name">
+    </div>
+    <div class="form-group">
+      <label for="LastName">Apellidos</label>
+      <input type="input" class="form-control" name="lastName" required placeholder="lastName" readonly="readonly" [(ngModel)]="answer.lastName">
+    </div>
+    <div class="form-group">
+      <label for="request">Asunto</label>
+      <input type="input" class="form-control" name="request" required placeholder="request" readonly="readonly" [(ngModel)]="answer.request">
+    </div>
+    <div class="form-group">
+      <label for="email">Correo Electronico</label>
+      <input type="input" class="form-control" name="email" required placeholder="email" readonly="readonly" [(ngModel)]="answer.email">
+    </div>
+    <div class="form-group">
+      <label for="topic">Tema</label>
+      <input type="input" class="form-control" name="topic" required placeholder="topic" readonly="readonly" [(ngModel)]="answer.topic">
+    </div>
+    <div class="form-group">
+      <label for="reas">Motivo</label>
+      <textarea class="form-control" rows="4" name="reas" required readonly="readonly" [(ngModel)]="answer.reason">
+        </textarea>
+    </div>
+    <div class="form-group">
+      <label for="answ">Respuesta</label>
+      <textarea class="form-control" rows="4" name="answer" required [(ngModel)]="answer.answer">
+        </textarea>
+    </div>
+    <button type="button" (click)="updateAnswer()" class="btn btn-primary">Actualizar</button>
+  </form>
+</div>
