@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
+const actdate = new Date();
+actdate.setUTCHours(actdate.getUTCHours() + 2);
 
 const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
 mongoose.Promise = global.Promise;
@@ -44,7 +46,7 @@ router.post('/complain', function (req, res) {
     newComplain.email = req.body.email;
     newComplain.topic = req.body.topic;
     newComplain.reason = req.body.reason;
-    newComplain.answer = req.body.answer;
+    newComplain.postDate = actdate.toUTCString();
     newComplain.save(function (err, insertedComplain) {
         if (err) {
             console.log('Error saving complain');
@@ -58,7 +60,7 @@ router.put('/complain/:id', function (req, res) {
     console.log('Update a complain');
     Complain.findByIdAndUpdate(req.params.id,
         {
-            $set: { answer: req.body.answer }
+            $set: { answer: req.body.answer, answerDate: actdate.toUTCString() }
         },
         {
             new: true

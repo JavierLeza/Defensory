@@ -9,7 +9,10 @@ const complainSchema = new Schema({
     email: String,
     topic: String,
     reason: String,
-    answer: String
+    answer: String,
+    postDate: String,
+    answerDate: String
+
 });
 
 module.exports = mongoose.model('complain', complainSchema, 'complains');

@@ -7,4 +7,6 @@ export class Answer {
     topic: string;
     reason: string;
     answer: string;
+    postDate: string;
+    answerDate: string;
 }

@@ -14,6 +14,10 @@
       <input type="input" class="form-control" name="request" required placeholder="request" readonly="readonly" [(ngModel)]="answer.request">
     </div>
     <div class="form-group">
+      <label for="postDate">Fecha de la incidencia</label>
+      <input type="input" class="form-control" name="postDate" required placeholder="postDate" readonly="readonly" [(ngModel)]="answer.postDate">
+    </div>
+    <div class="form-group">
       <label for="email">Correo Electronico</label>
       <input type="input" class="form-control" name="email" required placeholder="email" readonly="readonly" [(ngModel)]="answer.email">
     </div>
@@ -25,6 +29,10 @@
       <label for="reas">Motivo</label>
       <textarea class="form-control" rows="4" name="reas" required readonly="readonly" [(ngModel)]="answer.reason">
         </textarea>
+    </div>
+    <div class="form-group">
+      <label for="answerDate">Fecha de respuesta</label>
+      <input type="input" class="form-control" name="answerDate" required placeholder="answerDate" readonly="readonly" [(ngModel)]="answer.answerDate">
     </div>
     <div class="form-group">
       <label for="answ">Respuesta</label>
