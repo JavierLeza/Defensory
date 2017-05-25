@@ -12,6 +12,7 @@
     <div class="form-group">
       <label for="req">Asunto</label>
       <select class="form-control" name="request" required ngModel>
+          <option value="" hidden>Seleccione una opción</option>
           <option *ngFor="let request of req" [value]="request">{{request}}</option>
         </select>
     </div>
@@ -19,6 +20,7 @@
       <label for="email">Correo Electronico</label>
       <input type="text" class="form-control" name="email" required ngModel>
       <select class="form-control" name="email" required ngModel>
+          <option value="" hidden>Seleccione una opción</option>
           <option *ngFor="let email of emreq" [value]="email">{{email}}</option>
         </select>
     </div>
@@ -34,3 +36,4 @@
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
+
