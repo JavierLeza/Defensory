@@ -13,6 +13,7 @@ import { FileDetailComponent } from './file-detail/file-detail.component';
 import { AnswerCenterComponent } from './answer-center/answer-center.component';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCa1KCqLRLrHoKqbGdp9LLkwSd5Ly6TLfs'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
