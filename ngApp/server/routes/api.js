@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
-const actdate = new Date();
-actdate.setUTCHours(actdate.getUTCHours() + 2);
 
 const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
 mongoose.Promise = global.Promise;
@@ -38,6 +36,8 @@ router.get('/complains/:id', function (req, res) {
 });
 
 router.post('/complain', function (req, res) {
+    const actdate = new Date();
+    actdate.setUTCHours(actdate.getUTCHours() + 2);
     console.log('Post a complain');
     var newComplain = new Complain();
     newComplain.name = req.body.name;
@@ -57,6 +57,8 @@ router.post('/complain', function (req, res) {
 });
 
 router.put('/complain/:id', function (req, res) {
+    const actdate = new Date();
+    actdate.setUTCHours(actdate.getUTCHours() + 2);
     console.log('Update a complain');
     Complain.findByIdAndUpdate(req.params.id,
         {
