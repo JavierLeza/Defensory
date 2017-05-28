@@ -3,6 +3,8 @@ export class Answer {
     name: string;
     lastName: string;
     request: string;
+    email1: string;
+    email2: string;
     email: string;
     topic: string;
     reason: string;

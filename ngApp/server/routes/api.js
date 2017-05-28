@@ -43,7 +43,7 @@ router.post('/complain', function (req, res) {
     newComplain.name = req.body.name;
     newComplain.lastName = req.body.lastName;
     newComplain.request = req.body.request;
-    newComplain.email = req.body.email;
+    newComplain.email = req.body.email1 + req.body.email2;
     newComplain.topic = req.body.topic;
     newComplain.reason = req.body.reason;
     newComplain.postDate = actdate.toUTCString();
