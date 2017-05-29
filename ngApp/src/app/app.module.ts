@@ -14,6 +14,8 @@ import { AnswerCenterComponent } from './answer-center/answer-center.component';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { LoginComponent } from './login/login.component';
+import { PrivateComponent } from './private/private.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     FileDetailComponent,
     AnswerCenterComponent,
     AnswerListComponent,
-    AnswerDetailComponent
+    AnswerDetailComponent,
+    LoginComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,
