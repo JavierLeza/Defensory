@@ -7,8 +7,8 @@
       <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
       <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
       <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
-      <li><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
+      <li  [value]="loginout"><a routerLink="/login" routerLinkActive="active">{{loginout}}</a></li>
     </ul>
   </div>
 </nav>

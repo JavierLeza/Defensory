@@ -1,7 +1,9 @@
-import { Answer } from './../answer'; 
+import { Answer } from './../answer';
 
 import { Component, OnInit } from '@angular/core';
 import { AnswerService } from "./../answer.service";
+import { UserService } from "app/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'answer-center',
@@ -15,21 +17,25 @@ export class AnswerCenterComponent implements OnInit {
 
   selectedAnswer: Answer;
 
-  constructor(private _answerService: AnswerService) { }
+  constructor(private _answerService: AnswerService, private _service: UserService, private _router: Router) { }
 
   ngOnInit() {
-    this._answerService.getAnswers()
-      .subscribe(resAnswerData => this.answers = resAnswerData);
+    if (this._service.checkStatus() === false) {
+      this._router.navigate(['home']);
+    } else {
+      this._answerService.getAnswers()
+        .subscribe(resAnswerData => this.answers = resAnswerData);
+    }
   }
 
-  onSelectAnswer(answer:any){
+  onSelectAnswer(answer: any) {
     this.selectedAnswer = answer;
     console.log(this.selectedAnswer);
   }
 
-  onUpdateAnswerEvent(answer: any){
+  onUpdateAnswerEvent(answer: any) {
     this._answerService.updateAnswer(answer)
-    .subscribe(resUpdatedAnswer => answer = resUpdatedAnswer);
+      .subscribe(resUpdatedAnswer => answer = resUpdatedAnswer);
     this.selectedAnswer = null;
   };
 

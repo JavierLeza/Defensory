@@ -42,4 +42,12 @@ export class UserService {
       this._router.navigate(['private']);
     }
   }
+    checkStatus() {
+    if (localStorage.getItem("user") === null) {
+      return false;
+    }
+    if (localStorage.getItem("user") !== null) {
+      return true;
+    }
+  }
 }
