@@ -52,20 +52,19 @@ export class AnswerDetailComponent implements OnInit {
 
   }
 
-  splitText(originalText){
-    var finalText="", i;
+  splitText(originalText) {
+    var finalText = "", i;
     console.log(originalText);
     console.log(originalText.length);
-    if(!(originalText.length<=64)){
-      for(i=0;i<originalText.length;i++){
-        if(i%64 == 0){
-          
+    if (!(originalText.length <= 64)) {
+      for (i = 0; i < originalText.length; i++) {
+        if (i % 64 == 0) {
           finalText = finalText + "\n";
         }
         finalText = finalText + originalText.charAt(i);
       }
       return finalText;
-    }else{
+    } else {
       return originalText;
     }
 
