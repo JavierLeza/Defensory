@@ -34,30 +34,40 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   createPdf(): void {
-    /*
-        html2canvas(document.getElementById("pdftest"), {
-            onrendered: function(canvas) {
-              var img = canvas.toDataURL("image/png");
-              var doc = new jsPDF();
-              doc.addImage(img, 'JPEG',20,20);
-              doc.save('test.pdf');
-            }
-        });
-        */
     var doc = new jsPDF('p', 'mm', 'a4');
+    var finalReasonString = this.splitText(this.answer.reason.toString());
+    var finalAnswerString = this.splitText(this.answer.reason.toString());
     doc.text(20, 20, "Informe de Incidencia");
     doc.text(20, 30, "Nombre:" + this.answer.name + " " + this.answer.lastName);
     doc.text(20, 40, "Asunto:" + this.answer.request);
-    doc.text(20, 50, "Fecha de subida de la incidencia:" 
-                       + this.answer.postDate);
+    doc.text(20, 50, "Fecha de subida de la incidencia:"
+      + this.answer.postDate);
     doc.text(20, 60, "Correo electrónico:" + this.answer.email);
     doc.text(20, 70, "Tema:" + this.answer.topic);
-    var splitReason = doc.splitTextToSize(this.answer.reason, 1);
-    doc.text(20, 80, "Motivo:" + splitReason);
-    doc.text(20, 100, "Fecha de respuesta:" + this.answer.answerDate);
-    var splitAnswer = doc.splitTextToSize(this.answer.answer, 1);
-    doc.text(20, 110, "Respuesta:" + splitAnswer);
+    doc.text(20, 80, "Motivo:" + finalReasonString);
+    doc.addPage();
+    doc.text(20, 20, "Fecha de respuesta:" + this.answer.answerDate);
+    doc.text(20, 30, "Respuesta:" + finalAnswerString);
     doc.save('Test.pdf');
+
+  }
+
+  splitText(originalText){
+    var finalText="", i;
+    console.log(originalText);
+    console.log(originalText.length);
+    if(!(originalText.length<=64)){
+      for(i=0;i<originalText.length;i++){
+        if(i%64 == 0){
+          
+          finalText = finalText + "\n";
+        }
+        finalText = finalText + originalText.charAt(i);
+      }
+      return finalText;
+    }else{
+      return originalText;
+    }
 
   }
 
