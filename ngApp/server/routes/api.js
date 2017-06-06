@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
+const nodemailer = require('nodemailer');
 
 const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
 mongoose.Promise = global.Promise;
@@ -10,6 +11,31 @@ mongoose.connect(db, function (err) {
         console.error("Error: " + err);
     }
 });
+
+/*
+router.get('/sendemail', function (req, res) {
+    const smtpTransport = nodemailer.createTransport('SMTP', {
+        service: 'Outlook',
+        auth: {
+            user: 'jlezaa00@hotmail.com',
+            pass: 'coco15coco15'
+        }
+    });
+    const mailOption={
+        from:'Defensor ULE',
+        to:'jlezaa00@estudiantes.unileon.es',
+        subject:'Respuesta',
+        text:'Hola Mundo'
+    }
+    smtpTransport.sendMail(mailOptions,function(err, complains){
+        if(err){
+            console.log(err);
+        }else{
+            res.send('Email sent!');
+        }
+    });
+});
+*/
 
 router.get('/complains', function (req, res) {
     console.log('Get request for all complains');
