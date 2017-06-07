@@ -13,7 +13,9 @@ mongoose.connect(db, function (err) {
 });
 
 
-router.get('/sendemail', function (req, res) {
+router.post('/sendemail', function (req, res) {
+    const valueEmail = req.body.email;
+    const valueAnswer = req.body.answer;
     const smtpTransport = nodemailer.createTransport({
         service: 'Hotmail',
         auth: {
@@ -24,10 +26,12 @@ router.get('/sendemail', function (req, res) {
     });
     const mailOptions={
         from:'jlezaa00@hotmail.com',
-        to:'jlezaa00@estudiantes.unileon.es',
-        subject:'Respuesta',
-        text:'Hola Mundo'
-    }
+        to: valueEmail,
+        subject:'Respuesta del Defensor ULE',
+        text: 'A continuación se muestra la respuesta generada a la '
+        +req.body.request+' que realizó:\n\n'
+        +valueAnswer
+    };
     smtpTransport.sendMail(mailOptions,function(err, complains){
         if(err){
             console.log(err);

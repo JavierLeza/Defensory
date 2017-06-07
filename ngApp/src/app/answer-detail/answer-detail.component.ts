@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf'
+import { EmailService } from "app/email.service";
 declare let jsPDF;
 
 @Component({
@@ -7,7 +8,8 @@ declare let jsPDF;
   templateUrl: './answer-detail.component.html',
   styleUrls: ['./answer-detail.component.css'],
   inputs: ['answer'],
-  outputs: ['updateAnswerEvent']
+  outputs: ['updateAnswerEvent'],
+  providers: [EmailService]
 })
 export class AnswerDetailComponent implements OnInit {
   el: ElementRef;
@@ -15,7 +17,7 @@ export class AnswerDetailComponent implements OnInit {
 
   private editAnswer: boolean = false;
   private updateAnswerEvent = new EventEmitter();
-  constructor() { }
+  constructor(private _emailService: EmailService) { }
 
   ngOnInit() {
   }
@@ -55,7 +57,8 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   sendEmail() {
-    
+    this._emailService.postEmail(this.answer)
+      .subscribe(resEmailData => this.answer = resEmailData);
   }
 
   splitText(originalText) {

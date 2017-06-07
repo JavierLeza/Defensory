@@ -28,6 +28,6 @@ export class ComplainComponent implements OnInit {
   }
 
   req = ['Queja', 'Sugerencia'];
-  emreq = ['.unileon.es', '.estudiantes.unileon.es'];
+  emreq = ['@unileon.es', '@estudiantes.unileon.es'];
 }
 
