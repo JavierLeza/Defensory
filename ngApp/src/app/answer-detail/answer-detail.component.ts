@@ -1,7 +1,5 @@
 import { Component, OnInit, EventEmitter, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf'
-import * as html2canvas from 'html2canvas'
-import * as emailjs from 'emailjs'
 declare let jsPDF;
 
 @Component({
@@ -57,19 +55,7 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   sendEmail() {
-    var server = emailjs.server.connect({
-      user: "jlezaa00@hotmail.com",
-      password: "coco15coco15",
-      host: "smtp-mail.outlook.com",
-      tls: { ciphers: "SSLv3" }
-    });
-
-    server.send({
-      text: "i hope this works",
-      from: "jlezaa00@hotmail.com",
-      to: "jlezaa00@estudiantes.unileon.es",
-      subject: "testing emailjs"
-    }, function (err, message) { console.log(err || message); });
+    
   }
 
   splitText(originalText) {

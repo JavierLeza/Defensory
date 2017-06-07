@@ -12,17 +12,18 @@ mongoose.connect(db, function (err) {
     }
 });
 
-/*
+
 router.get('/sendemail', function (req, res) {
-    const smtpTransport = nodemailer.createTransport('SMTP', {
-        service: 'Outlook',
+    const smtpTransport = nodemailer.createTransport({
+        service: 'Hotmail',
         auth: {
             user: 'jlezaa00@hotmail.com',
             pass: 'coco15coco15'
-        }
+        },
+        tls: { rejectUnauthorized: false } 
     });
-    const mailOption={
-        from:'Defensor ULE',
+    const mailOptions={
+        from:'jlezaa00@hotmail.com',
         to:'jlezaa00@estudiantes.unileon.es',
         subject:'Respuesta',
         text:'Hola Mundo'
@@ -35,7 +36,7 @@ router.get('/sendemail', function (req, res) {
         }
     });
 });
-*/
+
 
 router.get('/complains', function (req, res) {
     console.log('Get request for all complains');
