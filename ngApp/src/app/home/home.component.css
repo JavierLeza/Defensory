@@ -7,3 +7,7 @@
   display: block;
   margin: 0 auto;
 }
+
+.jumbotron{
+  opacity: 0.5;
+}
