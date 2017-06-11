@@ -1,10 +1,13 @@
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: #282222;
+}
+.navbar {
+  background-color: #282222
 }
 .container .text-muted {
   margin: 20px 0;

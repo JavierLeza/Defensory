@@ -16,6 +16,7 @@ import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { LoginComponent } from './login/login.component';
 import { PrivateComponent } from './private/private.component';
+import { CarouselModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PrivateComponent } from './private/private.component';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCa1KCqLRLrHoKqbGdp9LLkwSd5Ly6TLfs'
-    })
+    }),
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
