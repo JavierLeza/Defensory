@@ -14,8 +14,6 @@ import { AnswerCenterComponent } from './answer-center/answer-center.component';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import { LoginComponent } from './login/login.component';
-import { PrivateComponent } from './private/private.component';
 import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -30,8 +28,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AnswerCenterComponent,
     AnswerListComponent,
     AnswerDetailComponent,
-    LoginComponent,
-    PrivateComponent
   ],
   imports: [
     BrowserModule,
