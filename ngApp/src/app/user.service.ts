@@ -20,28 +20,27 @@ export class UserService {
 
   logout() {
     localStorage.removeItem("user");
-    this._router.navigate(['login']);
+    return "hide";
   }
 
   login(user) {
     var authenticatedUser = users.find(u => u.email === user.email);
     if (authenticatedUser && authenticatedUser.password === user.password) {
       localStorage.setItem("user", authenticatedUser.email);
-      this._router.navigate(['private']);
       return true;
     }
     return false;
 
   }
 
-  checkCredentials() {
+ /* checkCredentials() {
     if (localStorage.getItem("user") === null) {
       this._router.navigate(['login']);
     }
     if (localStorage.getItem("user") !== null) {
       this._router.navigate(['private']);
     }
-  }
+  }*/
     checkStatus() {
     if (localStorage.getItem("user") === null) {
       return false;

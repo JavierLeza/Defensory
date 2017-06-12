@@ -8,10 +8,12 @@
       <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
       <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
       <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
-      <li  [value]="loginout"><a routerLink="/login" routerLinkActive="active">{{loginout}}</a></li>
+      <!--<li [value]="loginout"><a routerLink="/login" routerLinkActive="active">{{loginout}}</a></li> -->
+      <li [class]="access"><a (click)="acceder.show()">Login</a></li>
+      <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
     </ul>
     <div align="right">
-    <img src="images/ule.png">
+      <img src="images/ule.png">
     </div>
   </div>
 </nav>
@@ -19,14 +21,51 @@
   <router-outlet></router-outlet>
 </div>
 
+<div class="modal fade" bsModal #acceder="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Acceder</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="acceder.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="panel-body">
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="user.email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="user.password" id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <span>{{errorMsg}}</span>
+            <button (click)="login(); acceder.hide()" class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <footer class="footer">
   <div class="container">
-        <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
       <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
       <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
       <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
       <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
-      <li  [value]="loginout"><a routerLink="/login" routerLinkActive="active">{{loginout}}</a></li>
+      <li [value]="loginout"><a routerLink="/login" routerLinkActive="active">{{loginout}}</a></li>
     </ul>
     <p class="text-muted">Made by: Javier Leza Andía</p>
   </div>

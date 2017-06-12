@@ -13,7 +13,7 @@ export class PrivateComponent implements OnInit {
         private _service:UserService){}
  
     ngOnInit(){
-        this._service.checkCredentials();
+        //this._service.checkCredentials();
     }
  
     logout() {
