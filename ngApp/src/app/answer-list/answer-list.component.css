@@ -1,0 +1,11 @@
+.nav{
+    background: rgba(255,255,255,0.5);
+    border-radius: 13px 13px 13px 13px;
+    -moz-border-radius: 13px 13px 13px 13px;
+    -webkit-border-radius: 13px 13px 13px 13px;
+    border: 0px solid #000000
+}
+
+a, li { 
+    color: black;
+}

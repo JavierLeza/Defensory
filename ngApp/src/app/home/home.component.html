@@ -1,6 +1,3 @@
-<div class="jumbotron">
-  <h1>Home!</h1>
-</div>
 <div class="carousel">
   <carousel class="carousel">
     <slide>
@@ -20,13 +17,24 @@
       </div>
     </slide>
     <slide>
-      <img src="images/incidencia.jpg" alt="First slide">
+      <a routerLink="/complain"><img src="images/incidencia.jpg" alt="First slide"></a>
       <div class="carousel-caption">
         <h3>Incidencia</h3>
         <p>Escribenos para cualquier incidencia que tengas</p>
       </div>
     </slide>
   </carousel>
+</div>
+<div class="jumbotron">
+  <h3>QUÉ ES</h3>
+  <p>La Defensoría es el órgano institucional de la Universidad de León, elegido por su Claustro, para velar por el respeto
+    a los derechos y las libertades de todos los miembros de la Comunidad Universitaria: profesorado, alumnado, y personal
+    de administración y servicios, con la finalidad de contribuir a la mejora de la calidad y el buen funcionamiento de la
+    Universidad.
+  </p>
+  <p>Su actuación se desarrolla bajo los principios de independencia, autonomía y confidencialidad, no estando sometido a mandato
+    imperativo alguno en el desarrollo de sus competencias. Todas las instancias universitarias están obligadas a colaborar
+    con la Defensoría Universitaria, con carácter preferente y urgente, en la tramitación de sus actuaciones.</p>
 </div>
 <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
   <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
