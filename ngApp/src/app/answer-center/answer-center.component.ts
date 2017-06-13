@@ -37,6 +37,8 @@ export class AnswerCenterComponent implements OnInit {
     this._answerService.updateAnswer(answer)
       .subscribe(resUpdatedAnswer => answer = resUpdatedAnswer);
     this.selectedAnswer = null;
+    this._answerService.getAnswers()
+      .subscribe(resAnswerData => this.answers = resAnswerData);
   };
 
 }

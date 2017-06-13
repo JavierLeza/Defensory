@@ -30,7 +30,7 @@ router.post('/sendemail', function (req, res) {
         to: valueEmail,
         subject:'Respuesta del Defensor ULE',
         text: 'A continuación se muestra la respuesta generada a la '
-        +req.body.request+' que realizó:\n\n'
+        +req.body.request+' que realizó con el siguiente motivo - '+ req.body.reason +':\n\n'
         +valueAnswer
     };
     smtpTransport.sendMail(mailOptions,function(err, complains){

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _service: UserService) { }
+    
   login() {
     if (!this._service.login(this.user, this.users)) {
       this.errorMsg = 'Failed to login';
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-    signup(user: User) {
+  signup(user: User) {
     this._service.addUser(user)
       .subscribe(resNewUser => {
         this.users.push(resNewUser);
