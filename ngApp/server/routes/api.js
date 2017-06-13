@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
+const User = require('../models/user');
 const nodemailer = require('nodemailer');
 
 const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
@@ -41,6 +42,30 @@ router.post('/sendemail', function (req, res) {
     });
 });
 
+router.get('/users', function (req, res) {
+        User.find({})
+        .exec(function (err, users) {
+            if (err) {
+                console.log('Error retrieving users');
+            } else {
+                res.json(users);
+            }
+        });
+});
+
+router.post('/newUser', function (req, res) {
+    var newUser = new User();
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
+    newUser.save(function (err, insertedUser) {
+        if (err) {
+            console.log('Error saving user');
+        } else {
+            console.log(newUser.username);
+            res.json(insertedUser);
+        }
+    });
+});
 
 router.get('/complains', function (req, res) {
     console.log('Get request for all complains');

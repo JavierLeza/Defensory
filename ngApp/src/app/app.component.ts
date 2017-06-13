@@ -14,27 +14,30 @@ export class AppComponent implements OnInit {
   private ans: string;
   private loginout: string;
   public user = new User('', '');
+  users: Array<User>;
   public errorMsg = '';
 
   constructor(
     private _service: UserService) { }
   login() {
-    if (!this._service.login(this.user)) {
+    if (!this._service.login(this.user, this.users)) {
       this.errorMsg = 'Failed to login';
-    }else{
-      this.access="hide";
-      this.disconnect="";
-      this.ans="";
+    } else {
+      this.access = "hide";
+      this.disconnect = "";
+      this.ans = "";
     }
   }
 
   logout() {
-    this.disconnect=this._service.logout();
-    this.access="";
-    this.ans="hide";
+    this.disconnect = this._service.logout();
+    this.access = "";
+    this.ans = "hide";
   }
 
   ngOnInit() {
+    this._service.getUsers()
+      .subscribe(resUserData => this.users = resUserData);
     if (this._service.checkStatus() === true) {
       this.ans = "";
       this.access = "hide";
@@ -46,6 +49,5 @@ export class AppComponent implements OnInit {
       this.disconnect = "hide";
       this.loginout = "Acceder";
     }
-    //this._service.checkCredentials();
   }
 }

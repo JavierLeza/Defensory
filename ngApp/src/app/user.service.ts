@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 export class User {
   constructor(
@@ -7,23 +8,25 @@ export class User {
     public password: string) { }
 }
 
-var users = [
-  new User('admin', 'admin'),
-  new User('user1@gmail.com', 'a23')
-];
-
 @Injectable()
 export class UserService {
+  private _getUrl = "/api/users";
 
   constructor(
-    private _router: Router) { }
+    private _router: Router, private _http: Http) { }
+
+
+  getUsers() {
+    return this._http.get(this._getUrl)
+      .map((response: Response) => response.json());
+  }
 
   logout() {
     localStorage.removeItem("user");
     return "hide";
   }
 
-  login(user) {
+  login(user, users) {
     var authenticatedUser = users.find(u => u.email === user.email);
     if (authenticatedUser && authenticatedUser.password === user.password) {
       localStorage.setItem("user", authenticatedUser.email);
@@ -33,15 +36,7 @@ export class UserService {
 
   }
 
- /* checkCredentials() {
-    if (localStorage.getItem("user") === null) {
-      this._router.navigate(['login']);
-    }
-    if (localStorage.getItem("user") !== null) {
-      this._router.navigate(['private']);
-    }
-  }*/
-    checkStatus() {
+  checkStatus() {
     if (localStorage.getItem("user") === null) {
       return false;
     }
