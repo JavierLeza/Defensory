@@ -9,6 +9,7 @@
       <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
       <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
       <li [class]="access"><a (click)="acceder.show()">Login</a></li>
+      <li [class]="ans"><a (click)="register.show()">Registar nuevo Administrador</a></li>
       <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
     </ul>
     <div align="right">
@@ -55,6 +56,46 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" bsModal #register="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Registrar Admin</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="register.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #form="ngForm" (ngSubmit)="signup(form.value); register.hide()" class="well">
+        <div class="modal-body">
+          <div class="container">
+            <div class="panel-body">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input name="email" placeholder="Usuario" type="text" class="validate" required ngModel>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <p>
+                    <input name="password" placeholder="Contraseña" type="password" class="validate" required ngModel>
+                  </p>
+                </div>
+              </div>
+              <span>{{errorMsg}}</span>
+              <p>
+                <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="!form.valid">registrar</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   public user = new User('', '');
   users: Array<User>;
   public errorMsg = '';
+  selectedUser: User;
 
   constructor(
     private _service: UserService) { }
@@ -27,6 +28,14 @@ export class AppComponent implements OnInit {
       this.disconnect = "";
       this.ans = "";
     }
+  }
+
+    signup(user: User) {
+    this._service.addUser(user)
+      .subscribe(resNewUser => {
+        this.users.push(resNewUser);
+        this.selectedUser = resNewUser;
+      });
   }
 
   logout() {
