@@ -31,6 +31,7 @@ export class UserService {
 
   logout() {
     localStorage.removeItem("user");
+    this._router.navigate(['home']);
     return "hide";
   }
 

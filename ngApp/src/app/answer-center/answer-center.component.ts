@@ -14,6 +14,7 @@ import { Router } from "@angular/router";
 export class AnswerCenterComponent implements OnInit {
 
   answers: Array<Answer>;
+  
 
   selectedAnswer: Answer;
 

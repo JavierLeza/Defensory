@@ -16,6 +16,8 @@ import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { WehelpyouComponent } from './wehelpyou/wehelpyou.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AnswerCenterComponent,
     AnswerListComponent,
     AnswerDetailComponent,
+    WehelpyouComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       apiKey: 'AIzaSyCa1KCqLRLrHoKqbGdp9LLkwSd5Ly6TLfs'
     }),
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

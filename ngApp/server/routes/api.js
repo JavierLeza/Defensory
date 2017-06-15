@@ -2,17 +2,53 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
+const Files = require('../models/file');
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+mongoose.connect('mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa');
+const conn = mongoose.connection;
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+Grid.mongo = mongoose.mongo;
+const gfs = Grid(conn.db);
 
-const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
+//const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
 mongoose.Promise = global.Promise;
-mongoose.connect(db, function (err) {
+/*mongoose.connect(db, function (err) {
     if (err) {
         console.error("Error: " + err);
     }
+});*/
+router.use(bodyParser.json());
+
+const storage = GridFsStorage({
+    gfs: gfs,
+    filename: function (req, file, cb) {
+        const datetimestamp = Date.now();
+        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
+    },
+    /** With gridfs we can store aditional meta-data along with the file */
+    metadata: function (req, file, cb) {
+        cb(null, { originalname: file.originalname });
+    },
+    root: 'ctFiles' //root name for collection to store files into
 });
 
+const upload = multer({ //multer settings for single upload
+    storage: storage
+}).single('file');
+
+router.post('/upload', function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({ error_code: 1, err_desc: err });
+            return;
+        }
+        res.json({ error_code: 0, err_desc: null });
+    });
+});
 
 router.post('/sendemail', function (req, res) {
     const valueEmail = req.body.email;
@@ -23,27 +59,27 @@ router.post('/sendemail', function (req, res) {
             user: 'jlezaa00@hotmail.com',
             pass: 'coco15coco15'
         },
-        tls: { rejectUnauthorized: false } 
+        tls: { rejectUnauthorized: false }
     });
-    const mailOptions={
-        from:'jlezaa00@hotmail.com',
+    const mailOptions = {
+        from: 'jlezaa00@hotmail.com',
         to: valueEmail,
-        subject:'Respuesta del Defensor ULE',
+        subject: 'Respuesta del Defensor ULE',
         text: 'A continuación se muestra la respuesta generada a la '
-        +req.body.request+' que realizó con el siguiente motivo - '+ req.body.reason +':\n\n'
-        +valueAnswer
+        + req.body.request + ' que realizó con el siguiente motivo - ' + req.body.reason + ':\n\n'
+        + valueAnswer
     };
-    smtpTransport.sendMail(mailOptions,function(err, complains){
-        if(err){
+    smtpTransport.sendMail(mailOptions, function (err, complains) {
+        if (err) {
             console.log(err);
-        }else{
+        } else {
             res.send('Email sent!');
         }
     });
 });
 
 router.get('/users', function (req, res) {
-        User.find({})
+    User.find({})
         .exec(function (err, users) {
             if (err) {
                 console.log('Error retrieving users');
@@ -54,7 +90,7 @@ router.get('/users', function (req, res) {
 });
 
 router.post('/newUser', function (req, res) {
-    var newUser = new User();
+    const newUser = new User();
     newUser.email = req.body.email;
     newUser.password = req.body.password;
     newUser.save(function (err, insertedUser) {
@@ -95,14 +131,27 @@ router.post('/complain', function (req, res) {
     const actdate = new Date();
     actdate.setUTCHours(actdate.getUTCHours() + 2);
     console.log('Post a complain');
-    var newComplain = new Complain();
+    const newComplain = new Complain();
     newComplain.name = req.body.name;
     newComplain.lastName = req.body.lastName;
     newComplain.request = req.body.request;
     newComplain.email = req.body.email1 + req.body.email2;
     newComplain.topic = req.body.topic;
     newComplain.reason = req.body.reason;
-    newComplain.postDate = actdate.toUTCString();
+    //newComplain.postDate = actdate.toUTCString();
+    const curr_min = actdate.getMinutes();
+    const curr_month = actdate.getMonth()+1;
+    if (curr_min.length == 1) {
+        curr_min = "0" + curr_min;
+    }
+    if (curr_month.length == 1) {
+        curr_month = "0" + curr_month;
+    }
+    const date = actdate.getDate() + "-" + curr_month + "-" + actdate.getFullYear() + "-" + actdate.getUTCHours() + ":" + curr_min;
+    console.log(date);
+    newComplain.postDate = date.toString();
+    newComplain.answer = "";
+    newComplain.answerDate = "";
     newComplain.save(function (err, insertedComplain) {
         if (err) {
             console.log('Error saving complain');

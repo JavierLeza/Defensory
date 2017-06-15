@@ -5,12 +5,21 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
-      <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
-      <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
-      <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
-      <li [class]="access"><a (click)="acceder.show()">Login</a></li>
-      <li [class]="ans"><a (click)="register.show()">Registar nuevo Administrador</a></li>
-      <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
+      <li dropdown>
+        <a href dropdownToggle (click)="false">Que hacemos</a>
+        <ul *dropdownMenu class="dropdown-menu">
+          <li role="menuitem"><a class="dropdown-item" href="/we-help-you">Te ayudamos</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Investigación</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Mediación y conciliación</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Haznos tu consulta</a>
+        </ul>
+        </li>
+        <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
+        <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
+        <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
+        <li [class]="access"><a (click)="acceder.show()">Login</a></li>
+        <li [class]="ans"><a (click)="register.show()">Registar nuevo Administrador</a></li>
+        <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
     </ul>
     <div align="right">
       <a title="ULE" href="https://www.unileon.es/"><img src="images/ule.png" alt="ule"></a>
