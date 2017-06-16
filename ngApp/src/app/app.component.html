@@ -8,13 +8,14 @@
       <li dropdown>
         <a href dropdownToggle (click)="false">Que hacemos</a>
         <ul *dropdownMenu class="dropdown-menu">
-          <li role="menuitem"><a class="dropdown-item" href="/we-help-you">Te ayudamos</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Investigación</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Mediación y conciliación</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Haznos tu consulta</a>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/we-help-you">Te ayudamos</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/investigation">Investigación</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/mediation">Mediación y conciliación</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/complain">Haznos tu consulta</a>
         </ul>
         </li>
         <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
         <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
         <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
         <li [class]="access"><a (click)="acceder.show()">Login</a></li>

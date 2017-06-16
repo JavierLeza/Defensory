@@ -18,6 +18,9 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { WehelpyouComponent } from './wehelpyou/wehelpyou.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { InvestigationComponent } from './investigation/investigation.component';
+import { MediationComponent } from './mediation/mediation.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     AnswerListComponent,
     AnswerDetailComponent,
     WehelpyouComponent,
+    InvestigationComponent,
+    MediationComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
