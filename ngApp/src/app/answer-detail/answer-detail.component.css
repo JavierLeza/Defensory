@@ -5,4 +5,7 @@ form, h1{
     -webkit-border-radius: 13px 13px 13px 13px;
     border: 0px solid #000000;
     color: black;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
 }
