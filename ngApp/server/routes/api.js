@@ -6,7 +6,8 @@ const Files = require('../models/file');
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-mongoose.connect('mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa');
+//mongoose.connect('mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa');
+mongoose.connect('mongodb://127.0.0.1:27017');
 const conn = mongoose.connection;
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
@@ -139,15 +140,23 @@ router.post('/complain', function (req, res) {
     newComplain.topic = req.body.topic;
     newComplain.reason = req.body.reason;
     //newComplain.postDate = actdate.toUTCString();
-    const curr_min = actdate.getMinutes();
-    const curr_month = actdate.getMonth()+1;
+    var curr_min = actdate.getMinutes();
+    var curr_month = actdate.getMonth() + 1;
+    var curr_day = actdate.getDate();
+    var curr_hour = actdate.getUTCHours();
     if (curr_min.length == 1) {
         curr_min = "0" + curr_min;
     }
     if (curr_month.length == 1) {
         curr_month = "0" + curr_month;
     }
-    const date = actdate.getDate() + "-" + curr_month + "-" + actdate.getFullYear() + "-" + actdate.getUTCHours() + ":" + curr_min;
+    if (curr_day.length == 1) {
+        curr_day = "0" + curr_day;
+    }
+    if (curr_hour.length == 1) {
+        curr_hour = "0" + curr_hour;
+    }
+    const date = curr_day + "-" + curr_month + "-" + actdate.getFullYear() + "-" + curr_hour + ":" + curr_min;
     console.log(date);
     newComplain.postDate = date.toString();
     newComplain.answer = "";
