@@ -2,54 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Complain = require('../models/complain');
-const Files = require('../models/file');
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-//mongoose.connect('mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa');
-mongoose.connect('mongodb://127.0.0.1:27017');
+mongoose.connect('mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa');
 const conn = mongoose.connection;
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
-Grid.mongo = mongoose.mongo;
-const gfs = Grid(conn.db);
-
-//const db = "mongodb://javier:javier@ds013579.mlab.com:13579/defender_jlezaa";
 mongoose.Promise = global.Promise;
-/*mongoose.connect(db, function (err) {
-    if (err) {
-        console.error("Error: " + err);
-    }
-});*/
 router.use(bodyParser.json());
-
-const storage = GridFsStorage({
-    gfs: gfs,
-    filename: function (req, file, cb) {
-        const datetimestamp = Date.now();
-        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
-    },
-    /** With gridfs we can store aditional meta-data along with the file */
-    metadata: function (req, file, cb) {
-        cb(null, { originalname: file.originalname });
-    },
-    root: 'ctFiles' //root name for collection to store files into
-});
-
-const upload = multer({ //multer settings for single upload
-    storage: storage
-}).single('file');
-
-router.post('/upload', function (req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            res.json({ error_code: 1, err_desc: err });
-            return;
-        }
-        res.json({ error_code: 0, err_desc: null });
-    });
-});
 
 router.post('/sendemail', function (req, res) {
     const valueEmail = req.body.email;
@@ -139,7 +98,6 @@ router.post('/complain', function (req, res) {
     newComplain.email = req.body.email1 + req.body.email2;
     newComplain.topic = req.body.topic;
     newComplain.reason = req.body.reason;
-    //newComplain.postDate = actdate.toUTCString();
     var curr_min = actdate.getMinutes();
     var curr_month = actdate.getMonth() + 1;
     var curr_day = actdate.getDate();
@@ -156,7 +114,7 @@ router.post('/complain', function (req, res) {
     if (curr_hour.length == 1) {
         curr_hour = "0" + curr_hour;
     }
-    const date = curr_day + "-" + curr_month + "-" + actdate.getFullYear() + "-" + curr_hour + ":" + curr_min;
+    const date = curr_day + "-" + curr_month + "-" + actdate.getFullYear() + " " + curr_hour + ":" + curr_min;
     console.log(date);
     newComplain.postDate = date.toString();
     newComplain.answer = "";

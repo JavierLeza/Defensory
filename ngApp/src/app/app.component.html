@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Defensoría</a>
+      <a class="navbar-brand" href="#">Defensoría Universitaria</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
@@ -16,13 +16,12 @@
         </li>
         <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-        <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
         <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
         <li [class]="access"><a (click)="acceder.show()">Login</a></li>
         <li [class]="ans"><a (click)="register.show()">Registar nuevo Administrador</a></li>
         <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
     </ul>
-    <div align="right">
+    <div id="photo-ule" align="right">
       <a title="ULE" href="https://www.unileon.es/"><img src="images/ule.png" alt="ule"></a>
     </div>
   </div>
@@ -118,10 +117,14 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/we-help-you">Te ayudamos</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/investigation">Investigación</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/mediation">Mediación y conciliación</a></li>
         <li><a routerLink="/complain" routerLinkActive="active">Incidencia</a></li>
-        <li><a routerLink="/files" routerLinkActive="active">Archivos</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
         <li [class]="ans"><a routerLink="/answer" routerLinkActive="active">Respuestas</a></li>
         <li [class]="access"><a (click)="acceder.show()">Login</a></li>
+        <li [class]="ans"><a (click)="register.show()">Registar nuevo Administrador</a></li>
         <li [class]="disconnect"><a (click)="logout()">Desconectar</a></li>
       </ul>
       <div align="right">

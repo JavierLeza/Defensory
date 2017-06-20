@@ -1,5 +1,4 @@
 import { HomeComponent } from './home/home.component';
-import { FilesComponent } from './files/files.component';
 import { ComplainComponent } from './complain/complain.component';
 import { AnswerCenterComponent } from './answer-center/answer-center.component';
 import { NgModule } from '@angular/core';
@@ -12,7 +11,6 @@ import { ContactComponent } from "app/contact/contact.component";
 const routes: Routes = [
     {path: '', redirectTo:'/home', pathMatch:'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'files', component: FilesComponent},
     {path: 'complain', component: ComplainComponent},
     {path: 'answer', component: AnswerCenterComponent},
     {path: 'we-help-you', component: WehelpyouComponent},

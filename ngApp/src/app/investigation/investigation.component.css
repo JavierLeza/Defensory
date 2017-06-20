@@ -2,3 +2,14 @@
     background: rgba(255,255,255,0.5);
     color: black;
 }
+#text-invest{
+    padding-left: 10px;
+}
+.img-investigacion{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+#img-inve{
+  max-width: 100%;
+}

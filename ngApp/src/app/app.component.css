@@ -7,7 +7,8 @@
   background-color: #282222;
 }
 .navbar {
-  background-color: #282222
+  /*background-color: rgb(207,185,136);*/
+  color: black;
 }
 .container .text-muted {
   margin: 20px 0;
@@ -19,4 +20,10 @@
 
 .waves-effect {
   background-color: rgba(2, 185, 185, 0.99);
+}
+li, a{
+  color: black;
+}
+#photo-ule{
+  padding-top: 5px;
 }
