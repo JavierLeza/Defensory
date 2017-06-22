@@ -57,7 +57,6 @@ router.post('/newUser', function (req, res) {
         if (err) {
             console.log('Error saving user');
         } else {
-            console.log(newUser.username);
             res.json(insertedUser);
         }
     });
