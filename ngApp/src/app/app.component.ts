@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService, User } from "app/user.service";
+import { ModalDirective } from "ngx-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { UserService, User } from "app/user.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  @ViewChild('acceder') public acceder:ModalDirective;
   private access: string;
   private disconnect: string;
   private ans: string;
@@ -28,6 +29,8 @@ export class AppComponent implements OnInit {
       this.access = "hide";
       this.disconnect = "";
       this.ans = "";
+      this.errorMsg = '';
+      this.acceder.hide();
     }
   }
 
